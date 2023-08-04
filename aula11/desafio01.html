@@ -1,11 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>País</title>
+    <style>
+        body{
+            background-color: gray;
+            font: normal 15pt monospace;
+            color: white;
+        }
+        #numero1{
+            border-radius: 10px;
+            width: 250px;
+            height: 20px;
+        }
+        #n2{
+            border-radius: 10px;
+            width: 150px;
+            height: 25px;
+        }
+    </style>
 </head>
 <body>
-    <h1></h1>
+    <p></p>
+    <h1>Países</h1>
+    De qual país você é ? <input type="text" name="numero1" id="numero1">
+    <input id="n2" type="button" value="Verificar" onclick="calculo()">
+    <div id="res"></div>
+
+    <script>
+
+        function calculo() {
+            var pais = document.querySelector('input#numero1')
+            var res = document.getElementById('res')
+            var r1 = String(pais.value)
+            res.innerHTML = `<p> Morando no(a) ${r1} </p>`
+            if (r1 == 'Brasil'){
+                res.innerHTML += `Voce é Brasileiro`
+            } else {
+                res.innerHTML += `Voce é estrangeiro`
+            }
+        }
+        
+    </script>
 </body>
 </html>
