@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votos</title>
+    <style>
+        body{
+            text-align: center;
+            font: normal 20pt Arial;
+            background-color: gray;
+            color: white;
+        }
+        #idade{
+            border-radius: 10px;
+            width: 250px;
+            height: 30px;
+        }
+        #n2{
+            border-radius: 10px;
+            width: 150px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de votos</h1>
+    Qual a sua idade? <input type="number" name="idade" id="idade" >
+    <input id="n2" type="button" value="Verificar" onclick="calcular()">
+    <div id="res"></div>
+
+
+    <script>
+        function calcular(){
+            var idade = document.getElementById('idade')
+            var res = document.getElementById('res')
+            var r1 = Number(idade.value)
+
+            res.innerHTML = `<p> Voce tem ${r1} anos. </p>`
+            if (r1 < 16){
+                res.innerHTML += `<p> Voce não Vota! </p>`
+            } else if ( r1 < 18 || r1 >= 65){
+                res.innerHTML += `<p> Seu voto é Opcional! </p>`
+            } else if ( r1 >= 18 ){
+                res.innerHTML += `<p> Seu voto é Obrigatório! </p>`
+            }
+        }
+    </script>
+</body>
+</html>
