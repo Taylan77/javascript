@@ -11,9 +11,18 @@ function contar(){
         var i = Number(cont1.value)
         var f = Number(cont2.value)
         var p = Number(passo.value)
-
-        for (let c = i; c <= f; c += p ){
-            res.innerHTML += `${c}`
-        }   
+        if( p <= 0 ){
+            alert('Impossivel contar! Considerando passo 1.')
+            p = 1
+        }
+        if ( i < f){
+            for (let c = i; c <= f; c += p ){
+                res.innerHTML += ` ${c} \u{1F449} ` 
+            }   
+        }else {
+            for ( c = i; c >= f; c -= p)
+            res.innerHTML += ` ${c} \u{1F449} `
+        }
+        res.innerHTML += ` \u{1F3C1} `
     }
 }
