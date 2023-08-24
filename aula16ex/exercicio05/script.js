@@ -8,8 +8,11 @@ function adicionar(){
     }else{
         //TENHO QUE ARMAZENAR OS NUMEROS DENTRO DE UM ARRAY
         var valor = document.getElementById('selval')
-        array.push(valor)
-        valor.innerHTML = `Valor ${valor} adicionado!`
+        array.push(nume)
+        let item = document.createElement('option')
+        item.text = `Valor ${nume} adicionado.`
+        valor.appendChild(item)
+
     }
     
 }
