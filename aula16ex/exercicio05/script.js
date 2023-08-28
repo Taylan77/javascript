@@ -1,27 +1,65 @@
-function adicionar(){
-    var num = document.getElementById('txtn')
-    var nume = Number(num.value)
-    var array = []
+let num = document.getElementById('txtn')
+var lista = document.getElementById('selval')
+var res = document.getElementById('res')
+var valores = []
 
-    if( num.value.length <= 0 || nume > 100 || nume < 1){
-        alert('Valor inválido ou já encontrado na lista.')
+function isnum(n){
+    if(Number(n) >= 1 && Number(n) <= 100){
+        return true
     }else{
-        //TENHO QUE ARMAZENAR OS NUMEROS DENTRO DE UM ARRAY
-        var valor = document.getElementById('selval')
-        array.push(nume)
-        let item = document.createElement('option')
-        item.text = `Valor ${nume} adicionado.`
-        valor.appendChild(item)
+        return false
     }
-    
 }
 
+function islist(n, l){
+    if(l.indexOf(Number(n)) != -1){
+        return true
+    }else{
+        return false
+    }
+}
+
+function adicionar(){
+    if(isnum(num.value) && !islist(num.value, valores)){
+        valores.push(Number(num.value))
+        let item = document.createElement('option')
+        item.text = `Valor ${num.value} adicionado.`
+        lista.appendChild(item)
+        res.innerHTML = ''
+    }else {
+        alert('Valor inválido ou já encontrado na lista.')
+    }
+    num.value = ''
+    num.focus()
+}
+
+
 function finalizar(){
-    var res = document.getElementById('res')
-    var maior = Math.max.apply(null, array)
-    res.innerHTML = `Ao todo, temos  números cadastrados.<br/><br/>`
-    res.innerHTML += `O maior valor informado foi .<br/><br/>`
-    res.innerHTML += `O menor valor informado foi .<br/><br/>`
-    res.innerHTML += `Somando todos os valores, temos .<br/><br/>`
-    res.innerHTML += `A média dos valores digitados é .<br/><br/>`
-} //TENHO QUE COLOCAR OS VALORES ACIMA
+    if(valores.length == 0){
+        alert ('Adicione valores antes de finalizar!')
+    }else{
+
+        var total = valores.length
+        var maior = valores[0]
+        var menor = valores[0]
+        var soma = 0
+        var media = 0
+        for(var pos in valores){
+            soma += valores[pos]
+            if(valores[pos] > maior){
+                maior = valores[pos]
+            }
+            if(valores[pos] < menor){
+                menor = valores[pos]
+            }
+        }
+        media = soma / total
+        res.innerHTML = ''
+        res.innerHTML += `<p>Ao todo, temos ${total} números cadastrados.</p>`
+        res.innerHTML += `<p>O maior valor informado foi ${maior}.</p>`
+        res.innerHTML += `<p>O menor valor informado foi ${menor}.</p>`
+        res.innerHTML += `<p>Somando todos os valores, temos ${soma}.</p>`
+        res.innerHTML += `<p>A média dos valores digitados é ${media}.</p>`
+    }
+
+}

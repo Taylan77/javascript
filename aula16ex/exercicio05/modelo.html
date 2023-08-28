@@ -15,16 +15,12 @@
             <p>
                 Número (entre 1 e 100): <input type="number" name="txtn" id="txtn">
                 <input type="button" value="Adicionar" onclick="adicionar()">
+                <br><br><select name="numero" id="selval" size="10"></select>
+                <p><input type="button" value="Finalizar" onclick="finalizar()"></p>
             </p>
         </div>
-        <div>
-            <select name="numero" id="selval" size="10">
-                <option value="">Digite um número acima</option>
-            </select>
-            <p><input type="button" value="Finalizar" onclick="finalizar()"></p>
-        </div>
-        <div>
-            <p id="res"></p>
+        <div id="res">
+           
         </div>
     </section>
     <footer>
